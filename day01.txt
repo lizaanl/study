@@ -1,0 +1,28 @@
+20220814
+学习Linux基础命令
+输出重定向：>,>>
+例如：cat test01.txt test02.txt | grep hello > test01.log
+此命令会对test01.log进行内容的输入,上述命令的作用为将test01.txt,test02.txt中含有的hello语句输入到test01.log中
+如果test01.log该文件里面有内容那么就将里面内容进行覆盖（如果不想对其内容进行覆盖，那么就将命令中的>更换为>>)
+诺test02.txt不存在那么其会返回一个标准错误输出,如果还想将其写入test01.log文件中那么上面的命令就可以修改为
+cat test01.txt test02.txt | grep hello > test01.log 2>& 1
+其中2>& 1必须将命令置于后面，如果置于前面会导致标准错误输出无法输入到文件中
+
+输入重定向:<,<<
+例如:cat > [文件名] << EOF
+上述命令就是将你输入的内容输入到指定文件中直至遇到EOF结束输入
+
+touch命令
+这个主要是用来创建一些文档
+比如:touch test.cc,touch test.txt
+当然这个命令还可以用来修改文件的时间参数
+在stat [文档名] 后会有该文档的参数
+touch命令可以修改其中的Access和Modify参数
+touch -d 20230814 [文件名]  修改文档的时间参数 其中Access和Modify参数修改为20230814,Change不改变
+touch -a ·················  修改文档的时间参数 其中Access和Change参数修改Access修改为指定值,Change修改为修改时的时间
+touch -m ·················  同上
+
+touch -t 202308142015.20 
+
+echo 
+echo -e "\e[1;30;100mhello world\e[0m" 以\e[开头,m结尾。
