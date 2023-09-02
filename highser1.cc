@@ -38,7 +38,7 @@ int main(int argc,char* argv[])
     inet_pton(AF_INET , ip , &address.sin_addr );
     address.sin_port = htons(port);
 
-    int ret = bind(scok , ( struct sockaddr* )&address , sizeof(address));
+    int ret = bind(sock , ( struct sockaddr* )&address , sizeof(address));
     assert(ret != 1);
 
     ret = listen(sock , backlog);

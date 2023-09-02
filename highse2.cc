@@ -2,6 +2,7 @@
 #include<netinet/in.h>
 #include<arpa/inet.h>
 #include<assert.h>
+#include<stdio.h>
 #include<unistd.h>
 #include<stdlib.h>
 #include<errno.h>
@@ -20,7 +21,7 @@ int main(int argc , char* argv[])
     struct sockaddr_in address;
     bzero(&address , sizeof( address ));
     address.sin_family = AF_INET;
-    inet_pton( AF_INET , SOCK_STREAM , 0);
+    inet_pton( AF_INET, ip, &address.sin_addr);
     address.sin_port = htons( port );
 
     int sock = socket(PF_INET , SOCK_STREAM , 0);
